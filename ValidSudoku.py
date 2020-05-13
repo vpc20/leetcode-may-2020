@@ -138,12 +138,12 @@ def valid_sudoku2(board):
     for i, j in cube_start:
         cube_set.clear()
         for k in range(i, i + 3):
-            for l in range(j, j + 3):
-                if board[k][l] in cube_set:
-                    print(f'invalid value {board[k][l]} at {k}, {l}')
+            for m in range(j, j + 3):
+                if board[k][m] in cube_set:
+                    print(f'invalid value {board[k][m]} at {k}, {m}')
                     return False
                 else:
-                    cube_set.add(board[k][l])
+                    cube_set.add(board[k][m])
 
     for i in range(9):
         row_set.clear()

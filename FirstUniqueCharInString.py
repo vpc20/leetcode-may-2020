@@ -22,7 +22,8 @@ def first_uniq_char(s):
 
 
 def first_uniq_char_one_liner(s):
-    return [i for i, c in enumerate(s) if Counter(s)[c] == 1][0] if [i for i, c in enumerate(s) if Counter(s)[c] == 1] else -1
+    return [i for i, c in enumerate(s) if Counter(s)[c] == 1][0] \
+        if [i for i, c in enumerate(s) if Counter(s)[c] == 1] else -1
 
 
 assert first_uniq_char("leetcode") == 0

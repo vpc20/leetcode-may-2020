@@ -19,7 +19,7 @@
 # Input: num = "10", k = 2
 # Output: "0"
 # Explanation: Remove all the digits from the number and it is left with nothing which is 0.
-from itertools import combinations, product
+from itertools import combinations
 
 
 def remove_kdigits_brute(num, k):

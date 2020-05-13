@@ -24,7 +24,7 @@
 # @return a bool
 
 
-def isBadVersion(version):
+def is_bad_version(version):
     arr = [False, False, False, True, True]
     # arr = [False, True, True, True, True]
     # arr = [False, False, True, True, True]
@@ -37,7 +37,7 @@ def first_bad_version(n):
 
     while lo <= hi:
         mid = lo + (hi - lo) // 2
-        if isBadVersion(mid):
+        if is_bad_version(mid):
             hi = mid - 1
         else:
             lo = mid + 1

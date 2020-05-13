@@ -52,9 +52,34 @@ def flood_fill(image, sr, sc, new_color):
     return image
 
 
+def flood_fill1(image, sr, sc, new_color):
+    numrows = len(image)
+    numcols = len(image[0])
+    old_color = image[sr][sc]
+    if old_color == new_color:
+        return image
+
+    def dfs(r, c):
+        image[r][c] = new_color
+        if (r - 1) > -1 and image[r - 1][c] == old_color:
+            dfs(r - 1, c)
+        if (r + 1) < numrows and image[r + 1][c] == old_color:
+            dfs(r + 1, c)
+        if (c - 1) > -1 and image[r][c - 1] == old_color:
+            dfs(r, c - 1)
+        if (c + 1) < numcols and image[r][c + 1] == old_color:
+            dfs(r, c + 1)
+
+    dfs(sr, sc)
+    return image
+
+
 # image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
 assert flood_fill([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2) == [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
 assert flood_fill([[0, 0, 0], [0, 1, 1]], 1, 1, 1) == [[0, 0, 0], [0, 1, 1]]
+
+assert flood_fill1([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2) == [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
+assert flood_fill1([[0, 0, 0], [0, 1, 1]], 1, 1, 1) == [[0, 0, 0], [0, 1, 1]]
 
 # [[0, 0, 0],
 #  [0, 1, 1]]

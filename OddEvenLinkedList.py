@@ -54,29 +54,77 @@ def print_list(curr):
 # 1 3 2 4 5      move 2 to 1
 # 1 3 5 2 4      move 4 to 2
 
+# def odd_even_list(head):
+#     curr = head
+#     if curr is None or curr.next is None or curr.next.next is None:
+#         return head
+#
+#     i = 2
+#     prev_odd = curr
+#     prev_node = curr.next
+#     even_head = curr.next  # does not change
+#     curr = curr.next.next
+#     while curr:
+#         if i % 2 == 0:  # odd node because i starts from zero
+#             prev_odd.next = curr
+#             prev_node.next = curr.next
+#             curr.next = even_head
+#             prev_odd = curr
+#             curr = prev_node
+#         else:
+#             prev_node = curr
+#         curr = curr.next
+#         i += 1
+#     return head
+
+
 def odd_even_list(head):
-    curr = head
-    if curr is None or curr.next is None or curr.next.next is None:
+    if head is None or head.next is None or head.next.next is None:
         return head
 
-    i = 2
-    prev_odd = curr
-    prev_node = curr.next
-    currdiv2 = curr.next
-    curr = curr.next.next
+    odd = head
+    even = odd.next
+    even_head = even
+    curr = even.next
+    is_odd = True
     while curr:
-        if i % 2 == 0:  # odd node because i starts from zero
-            prev_odd.next = curr
-            nxt = curr.next
-            curr.next = currdiv2
-            prev_node.next = nxt
-            prev_odd = curr
-            curr = prev_node
+        if is_odd:
+            odd.next = curr
+            odd = curr
+            is_odd = False
         else:
-            prev_node = curr
+            even.next = curr
+            even = curr
+            is_odd = True
         curr = curr.next
-        i += 1
+
+    odd.next = even_head
+    even.next = None
     return head
+
+# def odd_even_list(head):
+#     curr = head
+#     if curr is None or curr.next is None or curr.next.next is None:
+#         return head
+#
+#     i = 2
+#     prev_odd = curr
+#     prev_node = curr.next
+#     even_head = curr.next
+#     curr = curr.next.next
+#     while curr:
+#         if i % 2 == 0:  # odd node because i starts from zero
+#             prev_odd.next = curr
+#             nxt = curr.next
+#             curr.next = even_head
+#             prev_node.next = nxt
+#             prev_odd = curr
+#             curr = prev_node
+#         else:
+#             prev_node = curr
+#         curr = curr.next
+#         i += 1
+#     return head
 
 
 # class Solution:

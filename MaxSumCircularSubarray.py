@@ -61,9 +61,22 @@ def max_subarr_sum_circular(arr):
 
     return max(maxsum, arrsum + max_subarr_sum(arr))
 
+# def max_subarr_sum_circular_naive(arr):
+#     if not arr:
+#         return 0
+#     lenarr = len(arr)
+#     arr = arr * 2
+#
+#     maxsum = -sys.maxsize
+#     for i in range(lenarr):
+#         maxsum = max(maxsum, max_subarr_sum(arr[i:lenarr + i]))
+#     return maxsum
+
 
 assert max_subarr_sum_circular([1, -2, 3, -2]) == 3
 assert max_subarr_sum_circular([5, -3, 5]) == 10
 assert max_subarr_sum_circular([3, -1, 2, -1]) == 4
 assert max_subarr_sum_circular([3, -2, 2, -3]) == 3
 assert max_subarr_sum_circular([-2, -3, -1]) == -1
+
+print(max_subarr_sum_circular([1, -2, 3, -4, 5]))

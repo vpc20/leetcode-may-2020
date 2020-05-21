@@ -107,25 +107,32 @@ def odd_even_list(head):
 #     if curr is None or curr.next is None or curr.next.next is None:
 #         return head
 #
-#     i = 2
 #     prev_odd = curr
-#     prev_node = curr.next
-#     even_head = curr.next
+#     prev = curr.next
+#     even_head = curr.next  # does not change
 #     curr = curr.next.next
-#     while curr:
-#         if i % 2 == 0:  # odd node because i starts from zero
-#             prev_odd.next = curr
-#             nxt = curr.next
-#             curr.next = even_head
-#             prev_node.next = nxt
-#             prev_odd = curr
-#             curr = prev_node
+#     exit_loop = False
+#     while True:
+#         if curr.next:
+#             prevsave = curr.next
+#             if curr.next.next:
+#                 currsave = curr.next.next
+#             else:
+#                 exit_loop = True
 #         else:
-#             prev_node = curr
-#         curr = curr.next
-#         i += 1
+#             exit_loop = True
+#
+#         currx = curr
+#         prev_odd.next = curr
+#         prev.next = curr.next
+#         curr.next = even_head
+#         prev_odd = currx
+#
+#         if exit_loop:
+#             break
+#         prev = prevsave
+#         curr = currsave
 #     return head
-
 
 # class Solution:
 #     def oddEvenList(self, head: ListNode) -> ListNode:

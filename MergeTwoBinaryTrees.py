@@ -45,10 +45,21 @@ def merge_trees(t1, t2):
         return t2
     if t2 is None:
         return t1
-    t1.val += t2.val
-    t1.left = merge_trees(t1.left, t2.left)
-    t1.right = merge_trees(t1.right, t2.right)
-    return t1
+    t = TreeNode(t1.val + t2.val)
+    t.left = merge_trees(t1.left, t2.left)
+    t.right = merge_trees(t1.right, t2.right)
+    return t
+
+# O(k) space
+# def merge_trees(t1, t2):
+#     if t1 is None:
+#         return t2
+#     if t2 is None:
+#         return t1
+#     t1.val += t2.val
+#     t1.left = merge_trees(t1.left, t2.left)
+#     t1.right = merge_trees(t1.right, t2.right)
+#     return t1
 
 
 # treea1 = TreeNode(1)

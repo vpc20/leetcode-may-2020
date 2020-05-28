@@ -34,6 +34,14 @@ def print_preorder(curr):
         print_preorder(curr.right)
 
 
+def print_preorder_inverted(curr):
+    print(curr.val, end=' ')
+    if curr.right:
+        print_preorder_inverted(curr.right)
+    if curr.left:
+        print_preorder_inverted(curr.left)
+
+
 def invert_tree(root):
     if root is None:
         return root
@@ -62,4 +70,7 @@ node7.right = node9
 
 print_preorder(node4)
 print('')
+print_preorder_inverted(node4)
+print('')
+
 print_preorder(invert_tree(node4))

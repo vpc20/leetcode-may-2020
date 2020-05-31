@@ -25,8 +25,7 @@ def coin_change(coins, amount):
             if coin <= curr_amt:
                 if dp[curr_amt - coin] != -1:
                     minval = min(minval, 1 + dp[curr_amt - coin])
-        dp[curr_amt] = -1 if minval == sys.maxsize else minval
-    print(dp)
+        dp[curr_amt] = minval if minval != sys.maxsize else -1
     return dp[-1]
 
 

@@ -65,7 +65,7 @@ def is_valid_bst_iter(root):
 
 
 def is_valid_bstx(curr):
-    prevval = None
+    prevval = -sys.maxsize
     stack = []
     while stack or curr:
         if curr:
@@ -73,7 +73,7 @@ def is_valid_bstx(curr):
             curr = curr.left
         else:
             curr = stack.pop()
-            if prevval is not None and prevval >= curr.val:
+            if prevval >= curr.val:
                 return False
             else:
                 prevval = curr.val

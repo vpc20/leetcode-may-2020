@@ -55,6 +55,23 @@ class Trie:
             curr = curr.children[c]
         return True
 
+    def words_with_prefix(self, prefix):
+        def dfs(curr, s):
+            if curr.end:
+                result.append(prefix + s)
+            for child in curr.children:
+                dfs(curr.children[child], s + child)
+
+        result = []
+        curr = self.root
+        for c in prefix:
+            if c not in curr.children:
+                return []
+            curr = curr.children[c]
+
+        dfs(curr, '')
+        return result
+
 
 # class Node:
 #     def __init__(self, char):
@@ -110,10 +127,10 @@ class Trie:
 
 # class Trie:
 #     def __init__(self):
-#         self.d = {}
+#         self.trie = {}
 #
 #     def insert(self, word):
-#         node = self.d
+#         node = self.trie
 #         for c in word:
 #             if c not in node:
 #                 node[c] = {}
@@ -121,7 +138,7 @@ class Trie:
 #         node['$'] = True
 #
 #     def search(self, word):
-#         node = self.d
+#         node = self.trie
 #         for c in word:
 #             if c in node:
 #                 node = node[c]
@@ -130,7 +147,7 @@ class Trie:
 #         return '$' in node
 #
 #     def startsWith(self, prefix):
-#         node = self.d
+#         node = self.trie
 #         for c in prefix:
 #             if c in node:
 #                 node = node[c]
@@ -141,12 +158,34 @@ class Trie:
 
 trie = Trie()
 
-trie.insert('apple')
-assert trie.search('apple') is True
-assert trie.search('app') is False
-assert trie.starts_with('app') is True
-trie.insert('app')
-assert trie.search('app') is True
+# trie.insert('apple')
+# trie.insert('appear')
+# trie.insert('appearance')
+# trie.insert('app')
+# trie.insert('approach')
+# trie.insert('applet')
+# trie.insert('apprehend')
+# assert trie.search('apple') is True
+# assert trie.starts_with('app') is True
+# assert trie.search('app') is True
+#
+# print(trie.words_with_prefix('app'))
+
+trie.insert('a')
+trie.insert('aa')
+trie.insert('aaa')
+
+assert trie.search('a') is True
+assert trie.search('aa') is True
+assert trie.search('aaa') is True
+assert trie.search('aaaa') is False
+
+assert trie.starts_with('a') is True
+assert trie.starts_with('aa') is True
+assert trie.starts_with('aaa') is True
+assert trie.starts_with('aaaa') is False
+
+print(trie.words_with_prefix('a'))
 
 # ["Trie","insert",  "search", "search",  "search", "startsWith","startsWith","startsWith"]
 # [[],    ["hello"], ["hell"], ["helloa"],["hello"],["hell"],     ["helloa"],  ["hello"]]
@@ -162,5 +201,3 @@ assert trie.search('app') is True
 # print(trie.search('app'))
 # ["Trie", "insert",  "search",  "search", "startsWith", "insert", "search"]
 # [[],     ["apple"], ["apple"], ["app"] , ["app"],      ["app"] , ["app"]]
-
-
